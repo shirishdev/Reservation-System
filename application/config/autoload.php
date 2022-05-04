@@ -88,11 +88,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-<<<<<<< HEAD
+ //<<<<<<< HEAD
 $autoload['helper'] = array('form','url','file');
-=======
+//=======
 $autoload['helper'] = array('url', 'file');
->>>>>>> aa-dev
+ //>>>>>>> aa-dev
 
 /*
 | -------------------------------------------------------------------

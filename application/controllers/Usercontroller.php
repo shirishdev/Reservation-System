@@ -10,25 +10,53 @@ class Usercontroller extends CI_Controller {
         $this->load->database();
         
 	}
-
+   
+   public function index() {
+     $data['userData']=$this->usermodel->fetch_data();
+    $this->load->view('displayUser',$data);
+   }
 
 
 	 public function insert_data() {
       $this->load->view('addUser');
       if ($this->input->post('submit')) {
-         
+        
+        var_dump($_POST);
+        
         $data = [
         'name'=>$_POST['name'],
        'email'=>$_POST['email'],
        'phone'=>$_POST['phone'],
        'password'=>$_POST['password'],
-       'role'=>$_POST['role']];
+       'role'=>$_POST['dropdown']];
        $result= $this->usermodel->insert_user($data);
       
        
       }
 
     }
-}
 
+  //   public function get_data(){
+      
+  //       $data['userData']=$this->usermodel->fetch_data();
+  //   $this->load->view('displayUser',$data);
+  // }
+
+     public function updatedata() {
+      
+      $id=$this->input->get('id');
+      $data['userData']=$this->usermodel->displayrecords($id);
+      $this->load->view('updateRecords',$data);
+     
+      if ($this->input->post('update')) {
+        $name=$this->input->post('name');
+        $email=$this->input->post('email');
+        $phone=$this->input->post('phone');
+        $passsword=$this->input->post('passsword');
+        $this->usermodel->updateRecords($name,$email,$phone,$passsword,$id);
+       echo "<script>alert('Data updated')</script>";
+      }
+    }
+
+  }
  ?>

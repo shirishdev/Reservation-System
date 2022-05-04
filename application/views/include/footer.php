@@ -45,7 +45,13 @@
 
 
     <script src="<?php echo base_url('assets/js/dashboard/dashboard-1.js')?>"></script>
+<script>
+    $(document).ready(function () {
+        $('#user_list').DataTable();
 
+    });
+    </script> 
 </body>
 
 </html>
+ 
