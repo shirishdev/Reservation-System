@@ -41,10 +41,13 @@
     <!-- ChartistJS -->
     <script src="<?php echo base_url('assets/plugins/chartist/js/chartist.min.js')?>"></script>
     <script src="<?php echo base_url('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')?>"></script>
-
-
-
     <script src="<?php echo base_url('assets/js/dashboard/dashboard-1.js')?>"></script>
+    
+    <script>
+    $(document).ready(function () {
+    $('#service_list').DataTable();
+    });
+</script>
 
 </body>
 

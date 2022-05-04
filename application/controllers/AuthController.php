@@ -28,7 +28,9 @@ class AuthController extends CI_Controller{
     		if ($email=="admin@gmail.com" && $password=="1234") {
 
     			$this->session->set_userdata(array('email'=>$email));
-    			$this->load->view('dashboard');
+    		   
+            redirect('DashBoardController');
+         	// $this->load->view('dashboard');
     		}else{
     			$this->load->model('login_view');
     			$result=$this->login_model->login();
