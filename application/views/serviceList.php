@@ -17,7 +17,7 @@
 					                                 <th>Title</th>
 					                                 <th>Description</th>
 					                                 <th>Start Date</th>
-					                                <th>End Date</th>
+					                                 <th>End Date</th>
 					                                 <th>Service Lenghts</th>
 					                                 <th>Max Residents</th>
 					                                 <th>Max Slot bookings</th>
@@ -26,18 +26,19 @@
 			                                 </thead>
 	                                          <tbody>
 	                                          	<?php
-		                                         foreach ($data as $row) { 
+		                                         foreach($ServiceData as $row) { 
             			                          ?>          			
             			                          <tr>
+            			                           <td><?php echo $row->service_id; ?></td>
 				                                   <td><?php echo $row->title; ?></td>
-				                                   <td><?php echo$row->description; ?> </td>
-				                                   <td><?php echo$row->start_date; ?></td>
-				                                   <td><?php echo$row->end_date; ?></td>
-				                                   <td><?php echo$row->service_lenght; ?></td>
-				                                   <td><?php echo$row->max_residents; ?></td>
-				                                   <td><?php echo$row->max_slot_bookings; ?></td>
-				                                   <td><a href="" class="btn-primary">Update</a>
-				                                       <a href="" class="btn-info">Delete</a></td>
+				                                   <td><?php echo $row->description; ?> </td>
+				                                   <td><?php echo $row->start_date; ?></td>
+				                                   <td><?php echo $row->end_date; ?></td>
+				                                   <td><?php echo $row->service_length; ?></td>
+				                                   <td><?php echo $row->max_residents; ?></td>
+				                                   <td><?php echo $row->max_slot_bookings; ?></td>
+				                                   <td><a href="<?php echo base_url('index.php/ServiceController/UpdateService/updateid?id='.$row->service_id); ?>" class="btn btn-primary">Update</a>
+				                                       <a href="" class=" btn btn-info">Delete</a></td>
 				                               </tr>
             			                        <?php
             			                        }

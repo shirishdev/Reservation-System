@@ -24,30 +24,64 @@
     <script src="<?php echo base_url('assets/js/gleek.js')?>"></script>
     <script src="<?php echo base_url('assets/js/styleSwitcher.js')?>"></script>
 
-    <!-- Chartjs -->
-    <script src="<?php echo base_url('assets/plugins/chart.js/Chart.bundle.min.js')?>"></script>
-    <!-- Circle progress -->
-    <script src="<?php echo base_url('assets/plugins/circle-progress/circle-progress.min.js')?>"></script>
-    <!-- Datamap -->
-    <script src="<?php echo base_url('assets/plugins/d3v3/index.js')?>"></script>
-    <script src="<?php echo base_url('assets/plugins/topojson/topojson.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/plugins/datamaps/datamaps.world.min.js')?>"></script>
-    <!-- Morrisjs -->
-    <script src="<?php echo base_url('assets/plugins/raphael/raphael.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/plugins/morris/morris.min.js')?>"></script>
+
     <!-- Pignose Calender -->
     <script src="<?php echo base_url('assets/plugins/moment/moment.min.js')?>"></script>
     <script src="<?php echo base_url('assets/plugins/pg-calendar/js/pignose.calendar.min.js')?>"></script>
-    <!-- ChartistJS -->
-    <script src="<?php echo base_url('assets/plugins/chartist/js/chartist.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/dashboard/dashboard-1.js')?>"></script>
+  
     
     <script>
     $(document).ready(function () {
     $('#service_list').DataTable();
     });
 </script>
+
+<script>
+    $(document).ready(function(){
+        $(".dayoff_checkbox").change(function() {
+            var day = $(this).data('day');
+
+            var starttime = "#"+day+"_start_time";
+            var endtime = "#"+day+"_end_time";
+            var lunchstarttime = "#"+day+"_lunch_start_time";
+            var lunchendtime = "#"+day+"_lunch_end_time";
+
+           var ischecked = $(this).is(':checked');
+           if (ischecked){
+                $(starttime).hide();
+                $(endtime).hide();
+                $(lunchstarttime).hide();
+                $(lunchendtime).hide();
+           }else{
+                $(starttime).show();
+                $(endtime).show();
+                $(lunchstarttime).show();
+                $(lunchendtime).show();
+           }
+
+
+            // alert('uncheckd ' + day);
+         });
+
+
+
+        // $('#checkbox').click(function(){
+        //     if(!('#checkbox')){
+        //         $('#monday_start_time').show();
+        //     }else('#checkbox'){
+        //         $('#monday_start_time').hide();
+        //     }
+        // })
+    });
+</script>
+
+<!-- (".coupon_question").click(function() {
+    if($(this).is(":checked")) {
+        $(".answer").show(300);
+    } else {
+        $(".answer").hide(200);
+    }
+}); -->
 
 </body>
 
