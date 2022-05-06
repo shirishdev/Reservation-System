@@ -16,14 +16,16 @@
                         </a>
                     </li>
 
-                       <li>
+
+                    <li>
                         <a href="<?php echo base_url('index.php/DashBoardController/') ?>" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Bookings</span>
                         </a>
                     </li>
 
-                       <li>
-                        <a href="<?php echo base_url('index.php/Usercontroller') ?>" aria-expanded="false">
+                  
+                    <li>
+                        <a href="<?php echo base_url('index.php/Usercontroller/') ?>" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Users</span>
                         </a>
                     </li>
