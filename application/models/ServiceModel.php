@@ -10,11 +10,11 @@ class ServiceModel extends CI_MODEL{
     }
 
 
-    public function FetchServiceData($service_id){
-        $this->db->
-         $query=$this->db->get('services');
-         return $query->result();
-    }
+        // public function FetchServiceData($service_id){
+        //     $this->db->
+        //      $query=$this->db->get('services');
+        //      return $query->result();
+        // }
 
 
 
