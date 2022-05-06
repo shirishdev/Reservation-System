@@ -28,7 +28,14 @@ class usermodel extends CI_MODEL{
 
      function updateRecords($name,$email,$phone,$password,$id)
      {
-       $query=$this->db->query("update form SET name='$name',email='$email',phone='$phone',password='$password' where id='$id'");
+       $query=$this->db->query("update users_table SET name='$name',email='$email',phone='$phone',password='$password' where id='$id'");
+
+     }
+
+     function deleterecords($id) {
+        $this->db->where("id",$id);
+        $this->db->delete("users_table");
+        return true;
      }
 }
 

@@ -22,7 +22,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-validation">
-                                    <form class="form-valide" action="<?php echo base_url('index.php/Usercontroller/'); ?>" method="post">
+                                 <form class="form-valide" action="<?php echo base_url('/index.php/Usercontroller'); ?>" method="post">
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="name"> Name <span class="text-danger">*</span>
                                             </label>
@@ -52,23 +52,16 @@
                                                <input type="password" class="form-control" id="password" name="password" value="<?php echo $userData->password; ?>" placeholder="Choose a safe one..">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="role">role <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-6">
-                                           <input type="text" class="form-control" id="role" name="role" value="user">
-                                            </div>
-                                        </div>
-                                         
-                                        <!-- <div class="dropdown">
-  														<button class="btn btn-secondary dropdown-toggle"  type="button" id="role" data-toggle="dropdown" 
-  														name="role">Role
-  														</button>
-													<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-														    <a class="dropdown-item" href="#">User</a>
-														    <a class="dropdown-item" href="#">Admin</a>
-														  </div>
-														</div> -->							
+                                       
+                                       
+                                      <!--  <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label">Select list (select one):</label>
+                                            <select class="form-control" id="sel1" name="dropdown">
+                                                <option>user</option>
+                                                <option>admin</option>
+                                             
+                                            </select>
+                                        </div>	 -->					
 														                                                                                                     
                                        <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">

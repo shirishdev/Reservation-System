@@ -9,7 +9,7 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-12">
-                         <button class='btn btn-primary mt-3 mb-3'><a href='' class='text-light'>Insert User</a></button>
+                         <button class='btn btn-primary mt-3 mb-3'><a href='<?php echo base_url('index.php/Usercontroller/insert_data'); ?>' class='text-light'>Insert User</a></button>
                                 <div class="card">
 <table class="table table-bordered" id="user_list">
             		<thead>
@@ -39,7 +39,7 @@
                                      <button class='btn btn-primary'><a href='<?php echo base_url('index.php/Usercontroller/updatedata?id='.$row->id); ?>' class='text-light'>Update</a></button>
                                       </td>
                                       <td>
-                                       <button class='btn btn-danger'><a href='' class='text-light'>Delete</a></button>
+                                       <button class='btn btn-danger'><a href='<?php echo base_url('index.php/Usercontroller/deletedata?id='.$row->id); ?>' class='text-light'>Delete</a></button>
                                       </td>
                                   </tr>
             			 
