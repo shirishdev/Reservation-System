@@ -11,7 +11,8 @@
                                 <h4 class="card-title">Update Services</h4>
                                 <div class="basic-form">
                                      <?php
-                                     foreach($ServiceData as $row) { 
+                                    foreach($ServiceData as $row)
+                                     { 
                                      ?> 
                                      <form method="post" action="<?php echo base_url('index.php/ServiceController/UpdateService'); ?>" enctype="multipart/form-data">
                                         <div class="form-row">
