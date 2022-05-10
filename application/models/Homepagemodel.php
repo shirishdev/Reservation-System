@@ -12,5 +12,11 @@ class Homepagemodel extends CI_MODEL{
 	    $query=$this->db->get();
 	    return $query->result();	
 	}
-}
-      		 
+
+public function DisplayFetchservicedetails($service_id) {
+              $query=$this->db->query("select * from services where service_id='".$service_id."'");
+              return $query->row();
+
+          }
+      }
+

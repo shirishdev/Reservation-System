@@ -21,9 +21,9 @@ class HomepageController extends CI_Controller {
 	 	$this->load->view('homepage_view',$data);
 	}
 
-	public function DisplayFetchservicedetails() {
+	public function DisplayFetchservicedetails($service_id) {
 		 $service_id=$this->input->get('service_id');
-		 $result
+		 $data['ServiceData']=$this->Homepagemodel->displayServicelist();
 		 
        	 $this->load->view('ServiceViewDetails');
 

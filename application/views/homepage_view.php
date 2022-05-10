@@ -59,14 +59,14 @@
 						    <div class="card-body">						    
 						      <p class="card-text"><?php echo $service->description; ?></p>
 						       	
-						      <a href="<?php echo base_url('index.php/HomepageController/DisplayFetchservicedetails'); ?>" class="btn btn-primary show_btn" id="">Make and Appointment</a>
+						      <a href="<?php echo base_url('index.php/HomepageController/DisplayFetchservicedetails/displayid?id='.$row->service_id); ?>" class="btn btn-primary show_btn">Make and Appointment</a>
 
 						    </div>
 						  </div>
                         </div>
 
                         <?php 
-                        	}
+                        	}  
                         ?>
 
                        
