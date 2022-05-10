@@ -30,8 +30,7 @@ class ServiceModel extends CI_MODEL{
         $this->db->insert('working_times',$workingTimesArr);
         $insert_id=$this->db->insert_id();
         return $insert_id;
-    }
-    
+    }    
     public function DeleteServiceData($service_id){
         $this->db->where("service_id",$service_id);
         $this->db->delete("services");
@@ -43,6 +42,6 @@ class ServiceModel extends CI_MODEL{
          $result=$this->db->update('services', $data);
          return $result;
     }
-}
+
 
 ?>

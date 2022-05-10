@@ -1,4 +1,4 @@
-  
+ <!--  <?php include('include/Frontendview.js'); ?> -->
         <!--**********************************
             Footer start
         ***********************************-->
@@ -18,16 +18,18 @@
     <!--**********************************
         Scripts
     ***********************************-->
+
+
     <script src="<?php echo base_url('assets/plugins/common/common.min.js')?>"></script>
     <script src="<?php echo base_url('assets/js/custom.min.js')?>"></script>
     <script src="<?php echo base_url('assets/js/settings.js')?>"></script>
     <script src="<?php echo base_url('assets/js/gleek.js')?>"></script>
     <script src="<?php echo base_url('assets/js/styleSwitcher.js')?>"></script>
 
+    <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
+
 
     <!-- Pignose Calender -->
-    <script src="<?php echo base_url('assets/plugins/moment/moment.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/plugins/pg-calendar/js/pignose.calendar.min.js')?>"></script>
   
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script>
@@ -79,13 +81,14 @@
     });
 </script>
 
-<!-- (".coupon_question").click(function() {
-    if($(this).is(":checked")) {
-        $(".answer").show(300);
-    } else {
-        $(".answer").hide(200);
-    }
-}); -->
+
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+
+    <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
 
 </body>
 

@@ -9,7 +9,7 @@
         jQuery('#date-range').datepicker({
             toggleActive: true
         });
-        jQuery('#datepicker-inline').datepicker({
-            todayHighlight: true
-        });
+        // jQuery('#datepicker-inline').datepicker({
+        //    // todayHighlight: true
+        // });
 })(jQuery);
