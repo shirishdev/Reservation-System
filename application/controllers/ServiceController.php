@@ -25,9 +25,10 @@ class ServiceController extends CI_Controller{
             'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
             'max_height' => "768",
             'max_width' => "1024"
-);
+    );
    
-   public function AddService(){
+   }
+    public function AddService(){
 
     try{
         $this->load->view('InsertService');
@@ -112,7 +113,7 @@ class ServiceController extends CI_Controller{
         $service_length=$this->input->post('service_length');
         $max_residents=$this->input->post('max_residents');
         $max_slot_bookings=$this->input->post('max_slot_bookings');
-        $service_price=$this->input->post('service_price')
+        $service_price=$this->input->post('service_price');
 
         $this->load->ServiceModel->UpdateService($title,$description,$start_date,$end_date,$service_lenght,$max_residents,$max_slot_bookings,$service_price);
 

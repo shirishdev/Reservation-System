@@ -1,4 +1,4 @@
-  
+ <!--  <?php include('include/Frontendview.js'); ?> -->
         <!--**********************************
             Footer start
         ***********************************-->
@@ -26,22 +26,12 @@
     <script src="<?php echo base_url('assets/js/gleek.js')?>"></script>
     <script src="<?php echo base_url('assets/js/styleSwitcher.js')?>"></script>
 
-<<<<<<< HEAD
-    <script src ="<?php echo base_url('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
 
-=======
->>>>>>> ae13fab256a2d9655d36982d1bdc19761cc6981a
 
     <!-- Pignose Calender -->
-    <script src="<?php echo base_url('assets/plugins/moment/moment.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/plugins/pg-calendar/js/pignose.calendar.min.js')?>"></script>
   
-    
-    <script>
-    $(document).ready(function () {
-    $('#service_list').DataTable();
-    });
-</script>
+
 
 <script>
     $(document).ready(function(){
@@ -82,49 +72,15 @@
     });
 </script>
 
-<<<<<<< HEAD
-    <!-- <script src="<?php echo base_url('assets/js/dashboard/dashboard-1.js')?>"></script> -->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.nl.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet"/>
-
-<script>
-    $(document).ready(function () {
-        $('#datepicker-inline').datepicker({
-            todayHighlight: true
-             
-        }).on('changeDate', function(e){
-       //   $('#dt_due').val(e.format('dd/mm/yyyy'))
-        });
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
 
-        $('#user_list').DataTable();
-
-    $("#sel1").click(function(){
-    $("p").hide();
-  });
-  $(".show_btn").click(function(){
-    $("p").show();
-  });
-
-    });
-
-    </script> 
-
-
-=======
-<!-- (".coupon_question").click(function() {
-    if($(this).is(":checked")) {
-        $(".answer").show(300);
-    } else {
-        $(".answer").hide(200);
-    }
-}); -->
->>>>>>> ae13fab256a2d9655d36982d1bdc19761cc6981a
+    <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
 
 </body>
 
 </html>
- 

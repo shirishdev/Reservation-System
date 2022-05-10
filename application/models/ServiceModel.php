@@ -31,8 +31,8 @@ class ServiceModel extends CI_MODEL{
         $insert_id=$this->db->insert_id();
         return $insert_id;
     }
-    public function UpdateService(){
-        $this->db->update('',)
-    }
+    // public function UpdateService(){
+    //     $this->db->update('',)
+    // }
 }
 ?>
