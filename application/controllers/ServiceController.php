@@ -25,13 +25,35 @@ class ServiceController extends CI_Controller{
             'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
             'max_height' => "768",
             'max_width' => "1024"
-);
+        );
+             $this->load->library('upload',$config);
+        }
    
    public function AddService(){
 
     try{
         $this->load->view('InsertService');
+
         if($this->input->post('submit')){
+
+            $config['upload_path'] = './assets/uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            // $config['max_size'] = '100';
+            // $config['max_width'] = '1024';
+            // $config['max_height'] = '768';
+            $this->upload->initialize($config);
+            $this->load->library('upload');
+
+            
+            if (!file_exists('./assets/uploads/')) {
+                mkdir('./assets/uploads/', 0777, true);
+            }
+            $imageUrl = '';
+            if($this->upload->do_upload('service_image')){ 
+                $imageDetailArray = $this->upload->data();
+                $imageUrl =  "assets/uploads/".$imageDetailArray['file_name'];
+            }
+                
                 $data=[
                 'title'=>$_POST['title'],
                 'description'=>$_POST['description'],
@@ -40,6 +62,7 @@ class ServiceController extends CI_Controller{
                 'service_length'=>$_POST['service_length'],
                 'max_residents'=>$_POST['max_residents'],
                 'max_slot_bookings'=>$_POST['max_slot_bookings'],
+                'service_image'=>$imageUrl,
                 'service_price'=>$_POST['service_price']];
 
                 $result=$this->ServiceModel->SaveService($data);
@@ -97,29 +120,62 @@ class ServiceController extends CI_Controller{
 }
   
     public function UpdateService(){
-        $service_id=$this->input->get('service_id');
-        
 
-        $data['ServiceData']=$this->ServiceModel->viewService($service_id);
-        $this->load->view('UpdateServiceData',$data);
+         $service_id=$this->input->get('service_id');
+         $data['ServiceData']=$this->ServiceModel->getServicesRecords($service_id);
+    
+         $this->load->view('UpdateServiceData',$data);
      
-      if ($this->input->post('update')) {
+      if ($this->input->post('Update')) {
 
-        $title=$this->input->post('title');
-        $description=$this->input->post('description');
-        $start_date=$this->input->post('start_date');
-        $end_date=$this->input->post('end_date');
-        $service_length=$this->input->post('service_length');
-        $max_residents=$this->input->post('max_residents');
-        $max_slot_bookings=$this->input->post('max_slot_bookings');
-        $service_price=$this->input->post('service_price')
+        $config['upload_path'] = './assets/uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            // $config['max_size'] = '100';
+            // $config['max_width'] = '1024';
+            // $config['max_height'] = '768';
+            $this->upload->initialize($config);
+            $this->load->library('upload');
 
-        $this->load->ServiceModel->UpdateService($title,$description,$start_date,$end_date,$service_lenght,$max_residents,$max_slot_bookings,$service_price);
+            
+            if (!file_exists('./assets/uploads/')) {
+                mkdir('./assets/uploads/', 0777, true);
+            }
+            $imageUrl = '';
+            if($this->upload->do_upload('service_image')){ 
+                $imageDetailArray = $this->upload->data();
+                $imageUrl =  "assets/uploads/".$imageDetailArray['file_name'];
+            }
+        $service_id =$_POST['service_id']; 
+        $data=[ 
+        'title'=>$_POST['title'],
+        'description'=>$_POST['description'],
+        'start_date'=>$_POST['start_date'],
+        'end_date'=>$_POST['end_date'],
+        'service_length'=>$_POST['service_length'],
+        'max_residents'=>$_POST['max_residents'],
+        'max_slot_bookings'=>$_POST['max_slot_bookings'],
+        'service_image'=>$imageUrl,
+        'service_price'=>$_POST['service_price']];
 
-        echo "<script>alert('Data updated')</script>";
+        $result = $this->load->ServiceModel->UpdateServicesRecords($service_id,$data);
+         
+        echo "<script>alert('Service Updated successfully')</script>";
+        redirect('ServiceController');
     }
-
-
 }
+
+   public function DeleteService(){
+
+    $service_id=$this->input->get('service_id');
+    $data['ServiceData']=$this->ServiceModel->DeleteServiceData($service_id);
+    if($data==true){
+      
+        echo "<script>alert('Service deleted successfully')</script>";
+        redirect('ServiceController');
+
+    }else{
+        echo "<script>alert('Unable to delete')</script>" ;
+    }
+    }
 }
 ?> 

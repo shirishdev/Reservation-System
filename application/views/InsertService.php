@@ -10,7 +10,7 @@
 						 <div class="card-body">
                             <h4 class="card-title">Add Service</h4>
                                 <div class="basic-form">
-<form method="post" action="<?php echo base_url('index.php/ServiceController/Addservice'); ?>">
+<form method="post" action="<?php echo base_url('index.php/ServiceController/Addservice'); ?>" enctype="multipart/form-data">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Title</label>
@@ -156,7 +156,7 @@
                                         <div class="row"> 
                                         <div class="form-group col-md-6">
                                             <label>Select Image</label>
-                                            <input type="image" name="service_image">
+                                            <input type="file" name="service_image">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Service Price</label>

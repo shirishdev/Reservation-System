@@ -8,31 +8,35 @@
 				<div class="row">
 					<div class="col-12">
 						 <div class="card-body">
-                                <h4 class="card-title">Add Service</h4>
+                                <h4 class="card-title">Update Services</h4>
                                 <div class="basic-form">
-
-                                     <form method="post" action="<?php echo base_url('index.php/ServiceController/UpdateServiceData'); ?>">
+                                     <?php
+                                     foreach($ServiceData as $row) { 
+                                     ?> 
+                                     <form method="post" action="<?php echo base_url('index.php/ServiceController/UpdateService'); ?>" enctype="multipart/form-data">
                                         <div class="form-row">
+                                            
+                                            <input type="hidden" class="form-control" name="service_id" value="<?php echo $row->service_id; ?>">
                                             <div class="form-group col-md-6">
                                                 <label>Title</label>
-                                                <input type="text" class="form-control" placeholder="Service Title" name="title">
+                                                <input type="text" class="form-control" placeholder="Service Title" name="title" value="<?php echo $row->title; ?>">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Description</label>
-                                                <input type="text" class="form-control" placeholder="Service Description" name="description">
+                                                <input type="text" class="form-control" placeholder="Service Description" name="description" value="<?php echo $row->description; ?>">
                                             </div>
                                         </div>
                                         <div class="row">
                                         <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Start Date</label>
-                                            <input type="date" class="form-control" placeholder="Service Start Date" name="start_date">
+                                            <input type="date" class="form-control" placeholder="Service Start Date" name="start_date" value="<?php echo $row->start_date; ?>">
                                         </div>
                                         </div>
                                         <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>End Date</label>
-                                            <input type="date" class="form-control" placeholder="Service End Date" name="end_date">
+                                            <input type="date" class="form-control" placeholder="Service End Date" name="end_date" value="<?php echo $row->end_date; ?>">
                                         </div>
                                         </div>
                                        </div>
@@ -52,36 +56,36 @@
                                                    <tbody>
                                                         <tr>
                                                             <td>Monday</td>
-                            <td><input type="time" name="monday_start_time" id="monday_start_time" style="display:none;"></td>
+                    <td><input type="time" name="monday_start_time" id="monday_start_time" style="display:none;" value="<?php echo $row->monday_start_time; ?>"></td>
 
-                            <td><input type="time" name="monday_end_time" id="monday_end_time" style="display:none;"></td>
+                    <td><input type="time" name="monday_end_time" id="monday_end_time" style="display:none;" value="<?php echo $row->monday_end_time; ?>"></td>
 
-                <td><input type="time" name="monday_lunch_start_time" id="monday_lunch_start_time" style="display:none;"></td>
+                <td><input type="time" name="monday_lunch_start_time" id="monday_lunch_start_time" style="display:none;" value="<?php echo $row->monday_lunch_start_time; ?>"></td>
 
-                <td><input type="time" name="monday_lunch_end_time" id="monday_lunch_end_time" style="display:none;"></td>
+                <td><input type="time" name="monday_lunch_end_time" id="monday_lunch_end_time" style="display:none;" value="<?php echo $row->monday_lunch_end_time; ?>"></td>
 
                 <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="monday" id="checkbox" checked></td>
                                                        
                                                         </tr>   
                                                         <tr>
                                                             <td>Tuesday</td>
-                 <td><input type="time" name="tuesday_start_time" id="tuesday_start_time" style="display:none;"></td>
+                 <td><input type="time" name="tuesday_start_time" id="tuesday_start_time" style="display:none;" value="<?php echo $row->tuesday_start_time; ?>"></td>
 
-                 <td><input type="time" name="tuesday_end_time" id="tuesday_end_time" style="display:none;"></td>
+                 <td><input type="time" name="tuesday_end_time" id="tuesday_end_time" style="display:none;" value="<?php echo $row->tuesday_end_time; ?>"></td>
 
-                <td><input type="time" name="tuesday_lunch_start_time" id="tuesday_lunch_start_time" style="display:none;"></td>
+                <td><input type="time" name="tuesday_lunch_start_time" id="tuesday_lunch_start_time" style="display:none;" value="<?php echo $row->tuesday_lunch_start_time; ?>"></td>
 
-                <td><input type="time" name="tuesday_lunch_end_time" id="tuesday_lunch_end_time" style="display:none;"></td>
+                <td><input type="time" name="tuesday_lunch_end_time" id="tuesday_lunch_end_time" style="display:none;" value="<?php echo $row->tuesday_lunch_end_time; ?>"></td>
 
                 <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="tuesday" id="checkbox" checked></td>                                    
                                                         </tr>
                                                         <tr>
                                                             <td>Wednesday</td>
-                <td><input type="time" name="wednesday_start_time" id="wednesday_start_time" style="display:none;"></td>
+                <td><input type="time" name="wednesday_start_time" id="wednesday_start_time" style="display:none;" value="<?php echo $row->wednesday_start_time; ?>"></td>
 
-                <td><input type="time" name="wednesday_end_time" id="wednesday_end_time" style="display:none;"></td>
+                <td><input type="time" name="wednesday_end_time" id="wednesday_end_time" style="display:none;" value="<?php echo $row->wednesday_end_time; ?>"></td>
 
-                <td><input type="time" name="wednesday_lunch_start_time" id="wednesday_lunch_start_time" style="display:none;"></td>
+                <td><input type="time" name="wednesday_lunch_start_time" id="wednesday_lunch_start_time" style="display:none;" value="<?php echo $row->wednesday_lunch_start_time; ?>"></td>
 
                 <td><input type="time" name="wednesday_lunch_end_time" id="wednesday_lunch_end_time" style="display:none;"></td>
                 
@@ -143,29 +147,33 @@
                                        <div class="form-row">
                                             <div class="form-group col-md-3">
                                                 <label>Service Lenght(In minutes)</label>
-                                                <input type="number" class="form-control" name="service_length" min="1" max="30" placeholder="Enter Service lenght in minutes">
+                                                <input type="number" class="form-control" name="service_length" min="1" max="30" placeholder="Enter Service lenght in minutes" value="<?php echo $row->service_length; ?>">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Max Residents</label>
-                                                <input type="number" name="max_residents"  class="form-control" name="max_residents" min="1" max="10" placeholder="Enter Max Residents">
+                                                <input type="number" name="max_residents"  class="form-control" name="max_residents" min="1" max="10" placeholder="Enter Max Residents" value="<?php echo $row->max_residents; ?>">
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <label>Max Slot Bookings</label>
-                                                <input type="number" class="form-control" placeholder="Slot Bookings" name="max_slot_bookings" min="1" max="10" placeholder="Max slot bookings">
+                                                <input type="number" class="form-control" placeholder="Slot Bookings" name="max_slot_bookings" min="1" max="10" placeholder="Max slot bookings" value="<?php echo $row->max_slot_bookings; ?>">
                                             </div>
                                         </div>
                                         <div class="row"> 
                                         <div class="form-group col-md-6">
                                             <label>Select Image</label>
-                                            <input type="image" name="service_image">
+                                            <input type="file" name="service_image" value="<?php echo $row->service_image; ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Service Price</label>
-                                            <input type="text" name="service_price">
+                                            <input type="text" name="service_price" value="<?php echo $row->service_price; ?>">
                                         </div>
+
+
                                        <input type="submit" name="Update" class="btn btn-success">
                                     </form>
-
+                                    <?php
+                                    } 
+                                   ?> 
                                 </div>
                             </div>
                         </div>
