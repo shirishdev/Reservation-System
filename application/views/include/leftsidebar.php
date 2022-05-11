@@ -18,7 +18,7 @@
 
 
                     <li>
-                        <a href="<?php echo base_url('index.php/DashBoardController/') ?>" aria-expanded="false">
+                        <a href="<?php echo base_url('index.php/BookingsController/') ?>" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Bookings</span>
                         </a>
                     </li>

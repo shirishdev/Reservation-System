@@ -11,7 +11,7 @@
                                 <h4 class="card-title">Update Services</h4>
                                 <div class="basic-form">
                                      <?php
-                                    foreach($ServiceData as $row)
+                                      foreach($ServiceData as $row)
                                      { 
                                      ?> 
                                      <form method="post" action="<?php echo base_url('index.php/ServiceController/UpdateService'); ?>" enctype="multipart/form-data">
@@ -56,8 +56,10 @@
                                                    </thead>
                                                    <tbody>
                                                         <tr>
+
+
                                                             <td>Monday</td>
-                    <td><input type="time" name="monday_start_time" id="monday_start_time" style="display:none;" value="<?php echo $row->monday_start_time; ?>"></td>
+                    <td><input type="time" name="monday_start_time" id="monday_start_time" style="display:none;" value="<?php echo $row->monday_start_time; ?>" ></td>
 
                     <td><input type="time" name="monday_end_time" id="monday_end_time" style="display:none;" value="<?php echo $row->monday_end_time; ?>"></td>
 
@@ -65,7 +67,7 @@
 
                 <td><input type="time" name="monday_lunch_end_time" id="monday_lunch_end_time" style="display:none;" value="<?php echo $row->monday_lunch_end_time; ?>"></td>
 
-                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="monday" id="checkbox" checked></td>
+                <td><input type="checkbox" name="dayoff_checkbox" class="update_dayoff_checkbox" data-day="monday" id="checkboxmonday" checked ></td>
                                                        
                                                         </tr>   
                                                         <tr>
@@ -78,7 +80,7 @@
 
                 <td><input type="time" name="tuesday_lunch_end_time" id="tuesday_lunch_end_time" style="display:none;" value="<?php echo $row->tuesday_lunch_end_time; ?>"></td>
 
-                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="tuesday" id="checkbox" checked></td>                                    
+                <td><input type="checkbox" name="dayoff_checkbox" class="update_dayoff_checkbox" data-day="tuesday" id="checkboxtuesday" checked></td>                                    
                                                         </tr>
                                                         <tr>
                                                             <td>Wednesday</td>
@@ -90,7 +92,7 @@
 
                 <td><input type="time" name="wednesday_lunch_end_time" id="wednesday_lunch_end_time" style="display:none;"></td>
                 
-                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="wednesday" id="checkbox" checked></td>                                            
+                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="wednesday" id="checkboxwednesday" checked></td>                                            
                                                         </tr>
                                                         <tr>
                                                             <td>Thursday</td>
@@ -102,7 +104,7 @@
 
                 <td><input type="time" name="thursday_lunch_end_time" id="thursday_lunch_end_time" style="display:none;"></td>
                 
-                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="thursday" id="checkbox" checked></td>  
+                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="thursday" id="checkboxthursday" checked></td>  
                                                         </tr>
                                                         <tr>
                                                             <td>Friday</td>
@@ -114,7 +116,7 @@
 
                 <td><input type="time" name="friday_lunch_end_time" id="friday_lunch_end_time" style="display:none;"></td>
                 
-                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="friday" id="checkbox" checked></td>
+                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="friday" id="checkboxfriday" checked></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Saturday</td>
@@ -127,7 +129,7 @@
 
                 <td><input type="time" name="saturday_lunch_end_time" id="saturday_lunch_end_time" style="display:none;"></td>
                 
-                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="saturday" id="checkbox" checked></td>
+                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="saturday" id="checkboxsaturday" checked></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Sunday</td>
@@ -139,7 +141,7 @@
 
                 <td><input type="time" name="sunday_lunch_end_time" id="sunday_lunch_end_time" style="display:none;"></td>
                 
-                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="sunday" id="checkbox" checked></td>
+                <td><input type="checkbox" name="dayoff_checkbox" class="dayoff_checkbox" data-day="sunday" id="checkboxsunday" checked></td>
                                                         </tr>   
                                                     </tbody>
                                                </table>
