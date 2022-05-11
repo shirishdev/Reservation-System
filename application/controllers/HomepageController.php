@@ -18,14 +18,18 @@ class HomepageController extends CI_Controller {
 	 	//load the method of model  
         $data['serviceList']=$this->Homepagemodel->displayservicerecords($date);  
         $data['date'] = $date;
+        
 	 	$this->load->view('homepage_view',$data);
 	}
 
-	public function DisplayFetchservicedetails($service_id) {
+	public function DisplayFetchservicedetails() {
 		 $service_id=$this->input->get('service_id');
-		 $data['ServiceData']=$this->Homepagemodel->displayServicelist();
-		 
-       	 $this->load->view('ServiceViewDetails');
+		 $date = !empty($this->input->get('date')) ? $this->input->get('date') : date('m/d/Y');
+
+		 $data['ServiceData']=$this->Homepagemodel->DisplaySingleService($service_id);
+		  $data['date'] = $date;
+		   
+       	 $this->load->view('ServiceViewDetails',$data);
 
 
   }
