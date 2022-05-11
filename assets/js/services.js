@@ -1,53 +1,7 @@
- <!--  <?php include('include/Frontendview.js'); ?> -->
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
-    </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
+    // <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+          
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- <script src="<?php echo base_url('assets/plugins/tables/js/jquery.dataTables.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/plugins/tables/js/datatable/dataTables.bootstrap4.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/plugins/tables/js/datatable-init/datatable-basic.min.js'); ?>"></script> -->
-   
-    <script src="<?php echo base_url('assets/plugins/common/common.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/custom.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/settings.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/gleek.js')?>"></script>
-    <script src="<?php echo base_url('assets/js/styleSwitcher.js')?>"></script>
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-
-    <!-- <script src="<?php echo base_url('assets/js/services.js'); ?>"></script> -->
-    <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
-
-
-    <!-- Pignose Calender -->
   
-    
-    <script>
-    $(document).ready(function () {
-        $('#service_list').DataTable({
-            "scrollX":true,
-        });
-    });
-</script>
- 
-<script>
-    $(document).ready(function(){
-        $(".dayoff_checkbox").change(function() {
             var day = $(this).data('day');
 
             var starttime = "#"+day+"_start_time";
@@ -67,17 +21,15 @@
                 $(lunchstarttime).show();
                 $(lunchendtime).show();
            }
-       });
-});
-</script>
-   <script>
-       $(document).ready(function(){
+  
+
+    
+  
             var day = $("#checkboxmonday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
             var lunchstarttime =  $("#"+day+"_lunch_start_time").val();
             var lunchendtime =  $("#"+day+"_lunch_end_time").val();
-            console.log(starttime);
             if(starttime == '' && endtime== '' && lunchstarttime == '' && lunchendtime == ''){
                 $("#checkboxmonday").prop('checked',true);
                   $("#"+day+"_start_time").hide();
@@ -93,8 +45,10 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
-           
-       var day = $("#checkboxtuesday").data('day');
+
+         
+       
+            var day = $("#checkboxtuesday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
             var lunchstarttime =  $("#"+day+"_lunch_start_time").val();
@@ -114,8 +68,9 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
+   
 
-        var day = $("#checkboxwednesday").data('day');
+            var day = $("#checkboxwednesday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
             var lunchstarttime =  $("#"+day+"_lunch_start_time").val();
@@ -135,8 +90,9 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
-
-         var day = $("#checkboxthursday").data('day');
+              
+     
+            var day = $("#checkboxthursday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
             var lunchstarttime =  $("#"+day+"_lunch_start_time").val();
@@ -157,6 +113,8 @@
 
             }
 
+
+        
             var day = $("#checkboxfriday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
@@ -177,7 +135,10 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
+  
 
+
+     
             var day = $("#checkboxsaturday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
@@ -198,7 +159,9 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
-            
+     
+
+       
             var day = $("#checkboxsunday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
@@ -219,13 +182,4 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
-     
-       });
-   </script> -->
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
-
-
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-</body>
-</html>
+  

@@ -42,6 +42,7 @@ class ServiceModel extends CI_MODEL{
          $result=$this->db->update('services', $data);
          return $result;
     }
+}
 
 
 ?>
