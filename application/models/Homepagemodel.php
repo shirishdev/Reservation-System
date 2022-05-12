@@ -17,11 +17,20 @@ public function DisplaySingleService($service_id) {
              
             $this->db->select('*');
             $this->db->from('services');
-            $this->db->where('service_id',$service_id);
+            $this->db->join('working_times', 'working_times.service_id = services.service_id');
+            $this->db->where('services.service_id',$service_id);
             $query=$this->db->get();
+            return $query->row();
+
+
+          }
+
+          public function DisplayFetchTimeSlot($service_id) {
+          $this->db->select('*');
+          $this->db->from('services');
+            $this->db->join('working_times', 'working_times.service_id = services.service_id');
+            $query = $this->db->get();
             return $query->result();
-
-
           }
       }
 

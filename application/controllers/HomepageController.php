@@ -23,6 +23,7 @@ class HomepageController extends CI_Controller {
 	}
 
 	public function DisplayFetchservicedetails() {
+		
 		 $service_id=$this->input->get('service_id');
 		 $date = !empty($this->input->get('date')) ? $this->input->get('date') : date('m/d/Y');
 
@@ -33,6 +34,11 @@ class HomepageController extends CI_Controller {
 
 
   }
+       public function GetTimeSlot() {
+       	  $service_id=$this->input->get('service_id'); 
+       	  $this->load->view('ServiceViewDetails',$data);
+
+       }
 }
 
 

@@ -8,32 +8,48 @@
 			<div class="col-lg-12">
 				<div class="row">
 					<div class="col-12">
+						 <div class="card" >
 						 <div class="card-body">
                      <div class="basic-form">
-                     	<?php
-                                    foreach($ServiceData as $service)
-                                     { 
-                                     ?> 
-                                     <h2>Selected Services</h2>
-                                     <div class="row">
-                                     	
-                                     </div>                              
+                     	
+                        <h2>Selected Services</h2>
+                                                                 
                                    <div class="row">
 									  <div class="col-sm">Service Detail
-									  <p><?php echo $service->title; ?></p>
-						              <p>Price <?php echo $service->service_price; ?></p>
-						              <img class="card-img-top" src="../assets/images/imgs/1.jpg" alt="Card image" style="width:50%">
-						              <p class="card-text">Description : <?php echo $service->description; ?></p>
+									  <p><?php echo $ServiceData->title; ?></p>
+						              <p>Price <?php echo $ServiceData->service_price; ?></p>
+						              <img class="card-img-top" src="<?php echo base_url('/assets/images/imgs/1.jpg')?>" alt="Card image" style="width:50%">
+						              <p class="card-text">Description : <?php echo $ServiceData->description; ?></p>
 									</div>
-									  <div class="col-sm">Time
-									  <table class="table" border="0" cellpadding="0" cellspacing="0" width="100%">
-														  <thead>
-														
-														  </thead>
+
+									<?php 
+									$day = strtolower(date('l', strtotime($date)));
+
+									$startTimeKey =  $day."_start_time";
+									$endTimeKey = $day."_end_time";
+
+									// var_dump($startTimeKey);
+									// var_dump($endTimeKey);
+
+									$startTime = $ServiceData->$startTimeKey;
+									$endTime = $ServiceData->$endTimeKey;
+
+									// var_dump($startTime);
+									// var_dump($endTime);
+
+
+									?>
+                              
+									  <div class="col-sm">Time Slot
+									  <table class="table" border="0" cellpadding="0" cellspacing="0" width="100%" id="TimeSlotView">
+									  	  <thead>
+									  	    </thead>
 														  <tbody>
+														  		<?php for ($i=$startTime; $i <= $endTime; $i++) {
+									  	  										  	  	 ?>
 														    <tr>
 														      <td>
-                                                              <a href="">9.00</a>
+                                                   <a href=""><?php echo $i->monday_start_time; ?>9.00</a>
 														      </td>
 														      <td>
 														      	<a href="" >9.30</a></td>
@@ -47,6 +63,8 @@
 														      	<a href="" >11.00</a>
 														      </td>
 														    </tr>
+
+														     <?php } ?>
 														    <tr>
 														      
 														      <td>
@@ -95,17 +113,19 @@
 														      </td>
 														      
 														    </tr>
+
+														
 														  </tbody>
 														</table>
 												 </div>
+												 
 									  		</div>
 									  </div>
 								  </div>
 								</div>
-								<a href="" class="btn btn-primary show_btn">Book Slot</a>
-								 <?php 
-                        	} ?>
-
+								</div>
+								<!-- <a href="" class="btn btn-primary show_btn">Book Slot</a> -->
+								
 							</div>
 						</div>
 					</div>
