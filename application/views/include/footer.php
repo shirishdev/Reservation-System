@@ -32,20 +32,20 @@
 
     <!-- <script src="<?php echo base_url('assets/js/services.js'); ?>"></script> -->
     <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
 
     <!-- Pignose Calender -->
   
     
     <script>
+
     $(document).ready(function () {
         $('#service_list').DataTable({
             "scrollX":true,
         });
     });
-</script>
- 
-<script>
+
     $(document).ready(function(){
         $(".dayoff_checkbox").change(function() {
             var day = $(this).data('day');
@@ -69,8 +69,8 @@
            }
        });
 });
-</script>
-   <script>
+
+   
        $(document).ready(function(){
             var day = $("#checkboxmonday").data('day');
             var starttime = $("#"+day+"_start_time").val();
@@ -219,13 +219,40 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
-     
+
+
+            //datepicker
+            $("#bookingdatepicker").datepicker({
+                format:"dd.mm.yyyy"
+            });
+
+            $('#bookingdatepicker,#service_list').change(function(){
+                getTimeSlots()
+            });
+            
        });
-   </script> -->
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    
+    function  getTimeSlots(){
+        serviceId = $('#service_list').val();
+        date = $('#bookingdatepicker').val();
+        $.ajax({
+            type:"POST",
+            url:"<?php echo base_url(); ?>index.php/BookingsController/getTimeSlots",
+            data:{"service_id":serviceId,"date":date},
+            dataType:"html",
+            success:function(response){
+                
+                $('#TimeSlots').html('');
+                $('#TimeSlots').html(response);
+            }
+       })
+    }
+    
+ </script>
 
-
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
 </body>
 </html>
