@@ -55,13 +55,13 @@
 						  <p>Price <?php echo $service->service_price; ?></p>
 						  <p>Duration <?php echo $service->service_length; ?></p>
 						  <div class="card">
-						    <img class="card-img-top" src="../assets/images/imgs/1.jpg" alt="Card image" style="width:100%">
+						   <img src="../assets/uploads/" alt="Card image" style="width:150px;height:150px;" <?php echo $service->service_image; ?>>
 						    <div class="card-body">						    
 						      <p class="card-text"><?php echo $service->description; ?></p>
 						       	
-						      <a href="<?php echo base_url('index.php/HomepageController/DisplayFetchservicedetails/displayid?id='.$row->service_id); ?>" class="btn btn-primary show_btn">Make and Appointment</a>
+						      <a href="<?php echo base_url('index.php/HomepageController/DisplayFetchservicedetails/displayid?service_id='.$service->service_id.'&date='.$date); ?>" class="btn btn-primary show_btn">Make and Appointment</a>
 
-						    </div>
+						    </div> 
 						  </div>
                         </div>
 
