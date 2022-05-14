@@ -22,6 +22,14 @@ class BookingsModel extends CI_MODEL{
         $query=$this->db->get();
 		return $query->row();
 	}
-}
+
+	public function getMaxBookings($service_id){
+		$this->db->select('max_slot_bookings');
+		$this->db->from('services');
+		$query=$this->db->get();
+		return $query->row();
+	}
+}   
+
 
 ?>

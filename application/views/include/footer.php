@@ -242,16 +242,37 @@
             dataType:"html",
             success:function(response){
                 
-                $('#TimeSlots').html('');
-                $('#TimeSlots').html(response);
+                $('.TimeSlots').html('');
+                $('.TimeSlots').html(response);
             }
        })
     }
-    
+
+    $('.TimeSlots').click(function(){
+        serviceId=$('#service_list').val();
+
+        $.ajax({
+            type:"POST",
+            url:"<?php echo base_url(); ?>index.php/BookingsController/getMaxSlotsBookings",
+            data:{"service_id":serviceId},
+            dataType:"html",
+            success:function(response){
+                
+                $('#Party_Size').html('');
+                $('#Party_Size').html(response);
+            }
+        })
+    })
+
+    $('#guest_details').change(function(){
+        alert('Working');
+     })
+
+
  </script>
 
     
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
 </body>
