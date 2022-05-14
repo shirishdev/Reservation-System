@@ -72,6 +72,7 @@
 </script>
    <script>
        $(document).ready(function(){
+             
             var day = $("#checkboxmonday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
@@ -219,7 +220,7 @@
                 $("#"+day+"_lunch_end_time").show();
 
             }
-     
+        
        });
    </script> -->
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
