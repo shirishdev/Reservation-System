@@ -1,49 +1,27 @@
  <?php include('include/Frontendheader.php'); ?>
 
- <div class="row">
- 	<div class="container mt-3">
- 		<div class="col-lg-12">
- 			<div class="row">
- 				<div class="col-12">
-
- 					<div class="card-body">
- 						<div class="basic-form">
- 							<div class="row">
-
- 							</div> 
-
- 							<div class="card-body">
- 								<h5 class="card-title">Select Max Slot</h4>
- 									<div class="basic-form">
- 										<form>
- 											<div class="form-group">
- 												<select class="form-control form-control-lg" id="Party_Size">
- 													<?php
- 													$party_size=!empty($MaxSlotbooking->max_slot_bookings) ? (int)$MaxSlotbooking->max_slot_bookings : 0;
- 													for($i=1; $i<=$party_size;$i++) { 
- 														?>
- 														<option class="Party_Size"><?php echo $i; ?></option>
- 														<?php
- 													}
- 													?>
- 												</select>
- 											</div>
- 										</form>
- 									</div>
- 								</div>
-
- 							</div>
- 						</div>
-
- 					</div>
- 				</div>
- 			</div>
- 		</div>
+ <h5 class="card-title">Select Max Slot</h4>
+ 	<div class="basic-form">
+         
+ 		<div class="form-group">
+             <select class="form-control form-control-lg" id="Party_Size" name="Party_Size">
+                 <?php
+                 $party_size=!empty($MaxSlotbooking->max_slot_bookings) ? (int)$MaxSlotbooking->max_slot_bookings : 0;
+                 for($i=1; $i<=$party_size;$i++) { 
+                     ?>
+                     <option class="Party_Size"><?php echo $i; ?></option>
+                     <?php
+                 }
+                 ?>
+             </select>
+         </div>
+     </div>
+     
 
 
- 		<script>
+     <script>
 
- 			$('#Party_Size').change(function() {			
+        $('#Party_Size').change(function() {			
   				//alert( 'hiii');
   				var partysize =  $(this).val(); 
 
@@ -60,7 +38,7 @@
   					$("#GuestFormDetails").html("");
   				}
 
-  			});
+             });
 
-  		</script>
-
+        
+         </script>

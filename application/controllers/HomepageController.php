@@ -69,8 +69,72 @@ class HomepageController extends CI_Controller {
       $service_id=$this->input->get('service_id');
       $this->load->view('MaxSlotBookingView',$data);
 	}
-}
+
+	public function Checkout() {
+		try{
+            
+		if($this->input->post('savebooking')) {
+
+        $this->load->library('session');
+      
+         $BookingNewData = array(
+           'name'  =>$this->session->userdata['bookingform']['name'],
+           'email'  =>$this->session->userdata['bookingform']['email'],
+           'contact'  =>$this->session->userdata['bookingform']['contact'],
+           'service_id'=>$this->session->userdata['bookingform']['service_id'],
+           'booking_date'=>$this->session->userdata['bookingform']['booking_date'],
+           'start_time'  =>$this->session->userdata['bookingform']['start_time'],
+           'Party_Size'  =>$this->session->userdata['bookingform']['Party_Size'],
+           'booking_created_at'=> date('Y-m-d H:i:s'));
+   
+          	$result=$this->Homepagemodel->InsertBookingRecords($BookingNewData);
+          	$guestDetails = !empty($this->session->userdata['bookingform']['GuestFormDetails']) ? $this->session->userdata['bookingform']['GuestFormDetails'] : [];
+           	
+          	
+           	foreach ($guestDetails as $key => $value) {
+           	 	$addGuestFeilds=[
+                    'booking_id'=>$result,
+                    'guest_details'=> $value
+                ];
+               $ResulGuest=$this->Homepagemodel->InsertGuestDetails($addGuestFeilds);
+              
+            }
+              
+    
+            if($result>0) {
+                echo "<script>alert(' Added Successfully')</script>";
+                 redirect('/HomepageController', 'refresh');
+                $this->session->unset_userdata('bookingform');
+            }else{
+                echo "<script>alert('Not added')</script>";
+            }
+        }else{
+        	 $this->load->library('session');
+          	$BookingNewData = array(
+		           'name'  =>$_POST['name'],
+		           'email'  =>$_POST['email'],
+		           'contact'  =>$_POST['contact'],
+		           'service_id'=>$_POST['service_id'],
+		            'booking_date'=>$_POST['booking_date'],
+		           'start_time'  =>$_POST['start_time'],
+		           'Party_Size'  =>$_POST['Party_Size'],
+		           'booking_created_at'=> date('Y-m-d H:i:s'),
+		           	'GuestFormDetails' =>isset($_POST['GuestFormDetails']) && !empty($_POST['GuestFormDetails']) ? $_POST['GuestFormDetails'] : [],
+		       	);
 
 
+             		$this->session->set_userdata('bookingform',$BookingNewData);
+         			$this->load->view('Checkoutview',$BookingNewData);
+            }
+        
+        }catch(Exception $e){
+        echo "<script>alert('".$e->getMessage()."')</script>";
+    }
+
+          
+         }
+	}
 
 ?>
+
+

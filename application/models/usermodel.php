@@ -37,6 +37,8 @@ class usermodel extends CI_MODEL{
         $this->db->delete("users_table");
         return true;
      }
+
+    
 }
 
     

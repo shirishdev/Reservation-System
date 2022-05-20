@@ -39,5 +39,23 @@ class Homepagemodel extends CI_MODEL{
 		$query = $this->db->get();
 		return $query->row();
 	}
+
+	public  function InsertBookingRecords($BookingNewData) {
+        $this->db->insert('bookings',$BookingNewData);
+		$insert_id=$this->db->insert_id();
+		return $insert_id;
+     }
+
+    public  function InsertGuestDetails($addGuestFeilds) {
+        return $this->db->insert('guest',$addGuestFeilds);
+     }
+
+     public function serviceList(){
+		$this->db->select('service_id,title');
+		$this->db->from('services');
+		$query=$this->db->get();
+		return $query->result();
+	}
 }
+
 
