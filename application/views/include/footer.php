@@ -33,8 +33,14 @@
     <!-- <script src="<?php echo base_url('assets/js/services.js'); ?>"></script> -->
     <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
         
         
+
+
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+
     <!-- Pignose Calender -->
   
     
@@ -78,7 +84,6 @@
             var endtime =  $("#"+day+"_end_time").val();
             var lunchstarttime =  $("#"+day+"_lunch_start_time").val();
             var lunchendtime =  $("#"+day+"_lunch_end_time").val();
-            console.log(starttime);
             if(starttime == '' && endtime== '' && lunchstarttime == '' && lunchendtime == ''){
                 $("#checkboxmonday").prop('checked',true);
                   $("#"+day+"_start_time").hide();
@@ -228,50 +233,73 @@
             });
 
             $('#bookingdatepicker,#service_list').change(function(){
-                getTimeSlots()
+              
+              getTimeSlots();
             });
+
             
 
        });
     
-    function  getTimeSlots(){
+ 
+       function  getTimeSlots(){
+         
+
         serviceId = $('#service_list').val();
         date = $('#bookingdatepicker').val();
-        $.ajax({
-            type:"POST",
-            url:"<?php echo base_url(); ?>index.php/BookingsController/getTimeSlots",
-            data:{"service_id":serviceId,"date":date},
-            dataType:"html",
-            success:function(response){
-                
-                $('.TimeSlots').html('');
-                $('.TimeSlots').html(response);
-            }
-       })
+        if(serviceId != '' && date !=''){
+            $.ajax({
+                type:"POST",
+                url:"<?php echo base_url(); ?>index.php/BookingsController/getTimeSlots",
+                data:{"service_id":serviceId,"date":date},
+                dataType:"html",
+                success:function(response){
+                  
+                    $('.TimeSlots').html('');
+                    $('.TimeSlots').html(response);
+                }
+            })
+
+        }
     }
 
-    $('.TimeSlots').click(function(){
-        serviceId=$('#service_list').val();
 
-        $.ajax({
-            type:"POST",
-            url:"<?php echo base_url(); ?>index.php/BookingsController/getMaxSlotsBookings",
-            data:{"service_id":serviceId},
-            dataType:"html",
-            success:function(response){
-                
-                $('#Party_Size').html('');
-                $('#Party_Size').html(response);
+
+    $("#createadminbooking").validate({
+
+        rules: {
+            
+          name: "required",
+          email:"required",
+          contact:"required",
+          services:"required",
+          booking_date:"required",
+        },
+    
+        messages: {
+          name: "Please enter name",
+          email:"Please enter the email",
+          contact:"Please enter Contact No",
+          services:"Enter Services",
+          booking_date:"Enter Booking Date"
+       
+        },
+        submitHandler: function(form) {
+            var starttime =  $("#start_time").val();
+
+            $("#timeslot-error").hide();
+
+            if(starttime == ''){
+                 $("#timeslot-error").show();
+                return false;
             }
-        })
-    })
 
-    $('#guest_details').change(function(){
-        alert('Working');
-     })
+           form.submit(); 
+        }
+  });
 
 
- </script>
+</script>
 
     
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css"/>
