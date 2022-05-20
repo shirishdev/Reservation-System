@@ -30,6 +30,12 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="<?php echo base_url('index.php/AuthController/logout') ?>" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+
                     
                 </ul>
             </div>

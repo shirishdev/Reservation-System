@@ -3,21 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ServiceController extends CI_Controller{
 
-   public function __construct(){
-                parent::__construct();
-                $this->load->helper('form','url');
-                $this->load->library('form_validation','session');
-                $this->load->database();
-                $this->load->model('ServiceModel');
-      }
+ public function __construct(){
+    parent::__construct();
+    $this->load->helper('form','url');
+    $this->load->library('form_validation','session');
+    $this->load->database();
+    $this->load->model('ServiceModel');
+}
 
-   public function index(){
-        $data['ServiceData']=$this->ServiceModel->FetchServiceData();
-        $this->load->view('serviceList',$data);
-        
-   }
+public function index(){
+    $data['ServiceData']=$this->ServiceModel->FetchServiceData();
+    $this->load->view('serviceList',$data);
+    
+}
 
-    public function AddService(){
+public function AddService(){
 
     try{
         $this->load->view('InsertService');
@@ -38,8 +38,8 @@ class ServiceController extends CI_Controller{
                 $imageDetailArray = $this->upload->data();
                 $imageUrl =  "assets/uploads/".$imageDetailArray['file_name'];
             }
-                
-                $data=[
+            
+            $data=[
                 'title'=>$_POST['title'],
                 'description'=>$_POST['description'],
                 'start_date'=>$_POST['start_date'],
@@ -92,75 +92,75 @@ class ServiceController extends CI_Controller{
 
                 $WorkingTimesResult=$this->ServiceModel->InsertWorkingTimes($workingTimesArr);
 
-            if(($result > 0)&&($workingTimesArr > 0)){
-                echo "<script>alert('Record inserted successfully')</script>";
-                redirect('ServiceController');
-            }else{
-                echo "<script>alert('Record not inserted')</script>";
+                if(($result > 0)&&($workingTimesArr > 0)){
+                    echo "<script>alert('Record inserted successfully')</script>";
+                    redirect('ServiceController');
+                }else{
+                    echo "<script>alert('Record not inserted')</script>";
+                }
             }
-        }
-    }catch(Exception $e){
+        }catch(Exception $e){
             echo "<script>alert('".$e->getMessage()."')</script>";
+        }
     }
-}
-  
+    
     public function UpdateService(){
 
-         $service_id=$this->input->get('service_id');
-         $data['ServiceData']=$this->ServiceModel->getServicesRecords($service_id);
-    
-         $this->load->view('UpdateServiceData',$data);
-     
-      if ($this->input->post('Update')) {
+       $service_id=$this->input->get('service_id');
+       $data['ServiceData']=$this->ServiceModel->getServicesRecords($service_id);
+       
+       $this->load->view('UpdateServiceData',$data);
+       
+       if ($this->input->post('Update')) {
 
         $config['upload_path'] = './assets/uploads/';
-            $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|png';
             // $config['max_size'] = '100';
             // $config['max_width'] = '1024';
             // $config['max_height'] = '768';
-            $this->upload->initialize($config);
-            $this->load->library('upload');
+        $this->upload->initialize($config);
+        $this->load->library('upload');
 
-            
-            if (!file_exists('./assets/uploads/')) {
-                mkdir('./assets/uploads/', 0777, true);
-            }
-            $imageUrl = '';
-            if($this->upload->do_upload('service_image')){ 
-                $imageDetailArray = $this->upload->data();
-                $imageUrl =  "assets/uploads/".$imageDetailArray['file_name'];
-            }
+        
+        if (!file_exists('./assets/uploads/')) {
+            mkdir('./assets/uploads/', 0777, true);
+        }
+        $imageUrl = '';
+        if($this->upload->do_upload('service_image')){ 
+            $imageDetailArray = $this->upload->data();
+            $imageUrl =  "assets/uploads/".$imageDetailArray['file_name'];
+        }
         $service_id =$_POST['service_id']; 
         $data=[ 
-        'title'=>$_POST['title'],
-        'description'=>$_POST['description'],
-        'start_date'=>$_POST['start_date'],
-        'end_date'=>$_POST['end_date'],
-        'service_length'=>$_POST['service_length'],
-        'max_residents'=>$_POST['max_residents'],
-        'max_slot_bookings'=>$_POST['max_slot_bookings'],
-        'service_image'=>$imageUrl,
-        'service_price'=>$_POST['service_price']];
+            'title'=>$_POST['title'],
+            'description'=>$_POST['description'],
+            'start_date'=>$_POST['start_date'],
+            'end_date'=>$_POST['end_date'],
+            'service_length'=>$_POST['service_length'],
+            'max_residents'=>$_POST['max_residents'],
+            'max_slot_bookings'=>$_POST['max_slot_bookings'],
+            'service_image'=>$imageUrl,
+            'service_price'=>$_POST['service_price']];
 
-        $result = $this->load->ServiceModel->UpdateServicesRecords($service_id,$data);
-         
-        echo "<script>alert('Service Updated successfully')</script>";
-        redirect('ServiceController');
+            $result = $this->load->ServiceModel->UpdateServicesRecords($service_id,$data);
+            
+            echo "<script>alert('Service Updated successfully')</script>";
+            redirect('ServiceController');
+        }
     }
-}
 
-   public function DeleteService(){
+    public function DeleteService(){
 
-    $service_id=$this->input->get('service_id');
-    $data['ServiceData']=$this->ServiceModel->DeleteServiceData($service_id);
-    if($data==true){
-      
-        echo "<script>alert('Service deleted successfully')</script>";
-        redirect('ServiceController');
+        $service_id=$this->input->get('service_id');
+        $data['ServiceData']=$this->ServiceModel->DeleteServiceData($service_id);
+        if($data==true){
+          
+            echo "<script>alert('Service deleted successfully')</script>";
+            redirect('ServiceController');
 
-    }else{
-        echo "<script>alert('Unable to delete')</script>" ;
-    }
+        }else{
+            echo "<script>alert('Unable to delete')</script>" ;
+        }
     }
 }
 ?> 
