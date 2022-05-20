@@ -1,6 +1,4 @@
- 
-
-     $(document).ready(function () {
+$(document).ready(function () {
         $('#datepicker-inline').datepicker({
               format: "dd.mm.yyyy",
               todayHighlight: true,
@@ -23,4 +21,5 @@
   //  $('#service_list').DataTable();
 
 
-    });
+
+ });

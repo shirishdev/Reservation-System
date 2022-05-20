@@ -84,9 +84,10 @@ public function getTimeSlots(){
        $endTs=strtotime($date.''.$endTime);
        $lenghtTs=(int)$ServiceData->service_length * 60 ;
        $TimeSlot=[];
-
+         
        for ($i=$startTs; $i<$endTs ; $i+=$lenghtTs) { 
          $TimeSlot[]=array('class'=>'available','bookingcount'=>'0','time'=>date('h:i A',$i));
+
      }
      $data['TimeSlot'] = $TimeSlot;
      $result = $this->load->view('ViewTimeSlots',$data);

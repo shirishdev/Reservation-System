@@ -36,6 +36,10 @@
 
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
+
+        
+        
+
     <!-- Pignose Calender -->
   
     
@@ -73,6 +77,7 @@
 
    
        $(document).ready(function(){
+             
             var day = $("#checkboxmonday").data('day');
             var starttime = $("#"+day+"_start_time").val();
             var endtime =  $("#"+day+"_end_time").val();
@@ -230,11 +235,13 @@
               
               getTimeSlots();
             });
+
       });
 
-       function  getTimeSlots(){
-         
-        serviceId = $('#service_list').val();
+      
+    
+    function  getTimeSlots(){
+            serviceId = $('#service_list').val();
         date = $('#bookingdatepicker').val();
         if(serviceId != '' && date !=''){
             $.ajax({
@@ -296,3 +303,4 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
 </body>
 </html>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
