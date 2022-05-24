@@ -14,7 +14,7 @@ class BookingsModel extends CI_MODEL{
 	}
 
 	public function serviceList(){
-		$this->db->select('service_id,title');
+		$this->db->select('service_id,title,');
 		$this->db->from('services');
 		$query=$this->db->get();
 		return $query->result();
@@ -37,7 +37,7 @@ class BookingsModel extends CI_MODEL{
 	}
 
 	public function getMaxBookings($service_id){
-		$this->db->select('max_slot_bookings');
+		$this->db->select('max_residents,max_slot_bookings');
 		$this->db->from('services');
 		$query=$this->db->get();
 		return $query->row();
@@ -70,7 +70,23 @@ class BookingsModel extends CI_MODEL{
           $this->db->delete("bookings");
           return true;
 	}
+
+	public function UpdateBookingDetails($booking_id){
+		
+	}
+
+	public function GetBookedTimeSlots($service_id,$date,$time){
+
+		$this->db->select('SUM(party_size) as totalcount');
+		$this->db->from('bookings');
+		$BookedTimeSlotArr=array('service_id'=>$service_id,'booking_date'=>$date,'start_time'=>$time);
+        $this->db->where($BookedTimeSlotArr);	
+        $GetData=$this->db->get();
+        return $GetData->row();
+
+    }
 }   
+
 
 
 ?>

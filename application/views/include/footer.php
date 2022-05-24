@@ -227,8 +227,11 @@
 
 
             //datepicker
+            //var dateToday = new Date();   
             $("#bookingdatepicker").datepicker({
-                format:"dd.mm.yyyy"
+                format:"dd.mm.yyyy",
+                //minDate: dateToday 
+               
             });
 
             $('#bookingdatepicker,#service_list').change(function(){
