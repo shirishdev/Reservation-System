@@ -30,7 +30,7 @@
                                             <h5 class="box-title m-t-30">Select a Date</h5>
                                             <p class="text-muted m-b-20 datepicker"></p>
                                             <div>
-                                                <div id="datepicker-inline"></div>
+                                                <div id="datepicker-inline" data-date="setcurrentdate"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@
                                  
                                      <div class="col-md-8">
                                      	<div class="container mt-3">
-						  <div class="card" >
+						  <div>
 						<div class="card-body">  
 
 
@@ -54,9 +54,9 @@
 						  <h2><?php echo $service->title; ?></h2>
 						  <p>Price <?php echo $service->service_price; ?></p>
 						  <p>Duration <?php echo $service->service_length; ?></p>
-						  <div class="card">
+						  <div>
 						   <img src="../assets/uploads/" alt="Card image" style="width:150px;height:150px;" <?php echo $service->service_image; ?>>
-						    <div class="card-body">						    
+						    <div>						    
 						      <p class="card-text"><?php echo $service->description; ?></p>
 						       	
 						      <a href="<?php echo base_url('index.php/HomepageController/DisplayFetchservicedetails/displayid?service_id='.$service->service_id.'&date='.$date); ?>" class="btn btn-primary show_btn">Make and Appointment</a>

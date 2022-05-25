@@ -32,6 +32,7 @@
 
     <!-- <script src="<?php echo base_url('assets/js/services.js'); ?>"></script> -->
     <script src="<?php echo base_url('assets/js/homepage.js')?>"></script>
+     <script src="<?php echo base_url('assets/js/dashBoard.js')?>"></script>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
         

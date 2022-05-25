@@ -34,27 +34,38 @@ class Homepagemodel extends CI_MODEL{
 	}
 
 	public function DisplayMaxTimeslot($service_id) {
-		$this->db->select('max_slot_bookings');
+		$this->db->select('max_residents,max_slot_bookings');
 		$this->db->from('services');
 		$query = $this->db->get();
 		return $query->row();
 	}
 
 	public  function InsertBookingRecords($BookingNewData) {
-        $this->db->insert('bookings',$BookingNewData);
+		$this->db->insert('bookings',$BookingNewData);
 		$insert_id=$this->db->insert_id();
 		return $insert_id;
-     }
+	}
 
-    public  function InsertGuestDetails($addGuestFeilds) {
-        return $this->db->insert('guest',$addGuestFeilds);
-     }
+	public  function InsertGuestDetails($addGuestFeilds) {
+		return $this->db->insert('guest',$addGuestFeilds);
+	}
 
-     public function serviceList(){
+	public function serviceList(){
 		$this->db->select('service_id,title');
 		$this->db->from('services');
 		$query=$this->db->get();
 		return $query->result();
+	}
+
+	public function ValidateBookingRecords($service_id,$date,$time) {
+		$GetBookingDataArr = array('service_id' => $service_id, 'booking_date' => $date, 'start_time' => $time);
+		$this->db->select('SUM(Party_Size) as totalcount');
+		$this->db->from('bookings');	
+		$this->db->where($GetBookingDataArr);
+	
+		$query=$this->db->get();
+		//echo $this->db->last_query();
+		return $query->row();
 	}
 }
 
