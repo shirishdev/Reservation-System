@@ -16,7 +16,6 @@ class AuthController extends CI_Controller{
 
  public function login(){
 
-  $this->load->library('form_validation');
   $this->form_validation->set_rules('email','Email','required');
   $this->form_validation->set_rules('password','Password','required');
 

@@ -5,7 +5,7 @@
       cursor: pointer;
   }
   .selected-slot{
-    background-color: green;
+    background-color: green !important;
     color: #fff;
 }
 .booked{
@@ -15,6 +15,8 @@
      text-decoration: none;
      color: black;
 }
+
+
   
 </style>
 <table>
@@ -27,8 +29,9 @@
                 <?php
                 foreach($timeArr as $value){
                     $class = $value['class'] == 'booked' ? 'booked' : '';
+                    $selectedClass =$value['time'] == $selectedtime ? 'selected-slot' : '';
                     ?>
-                    <td class="time_slots <?php echo $class; ?>" data-time="<?php echo $value['time']; ?>" data-startts="<?php echo strtotime($value['time']); ?>" id="timeslot<?php echo strtotime($value['time']); ?>">
+                    <td class="time_slots <?php echo $class; ?> <?php echo $selectedClass; ?>" data-time="<?php echo $value['time']; ?>" data-startts="<?php echo strtotime($value['time']); ?>" id="timeslot<?php echo strtotime($value['time']); ?>">
                         <?php echo $value['time']; ?>
                     </td>
                     <?php
@@ -48,6 +51,7 @@
   $(document).ready(function(){
 
    $('.time_slots').click(function(){
+
      var time_slots = $(this).data('time');
      var serviceId=$('#service_list').val();
      date = $('#bookingdatepicker').val();
@@ -59,7 +63,6 @@
     $( ".time_slots" ).removeClass("selected-slot");
     $( timeslotId ).addClass("selected-slot");
    
-
     $.ajax({
         type:"POST",
         url:"<?php echo base_url(); ?>index.php/BookingsController/getMaxSlotsBookings",

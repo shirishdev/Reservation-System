@@ -15,7 +15,7 @@
 						 <div class="card-body">
                             <h4 class="card-title">Update Booking</h4>
                                 <div class="basic-form">
-<form method="post" action="<?php echo base_url('index.php/BookingsController/UpdateBookingData'); ?>" enctype="multipart/form-data" id="createadminbooking">
+<form method="post" action="<?php echo base_url('index.php/BookingsController/UpdateBookingData'); ?>" enctype="multipart/form-data" id="UpdateBookingForm">
                                       
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -65,7 +65,7 @@
 
                                           </div>
                                           
-                                            <input type="hidden" name="start_time" id="start_time" value="">
+                                            <input type="hidden" name="start_time" id="start_time" value="<?php echo $BookingData->start_time ; ?>">
 
                                             <span style="display: none;" id="timeslot-error">Please Select Time Slot</span>
                                           <div id="Party_Size" class="form-group col-md-6">
@@ -101,59 +101,64 @@
 
 <?php include('include/footer.php');?>
 
+
 <script>
+    
+     $(document).ready(function(){
 
-        $('#party_size').load(function(){
-            var partysize = $(this).val();
-            
-            if(partysize > 1){
-                var field = '';
-                field += '<label>Guest Names</label>';
-               
-                for (var i = 1; i < partysize; i++) {
-                    field += '<div class="form-group"><input type="text" class="form-control" name="guest_details[]" id="guest_details'+i+'"></div>';
+
+        serviceId = $('#service_list').val();
+
+        date = $('#bookingdatepicker').val();
+        selectedTime = $('#start_time').val();
+        if(serviceId != '' && date !=''){
+            $.ajax({
+                type:"POST",
+                url:"<?php echo base_url(); ?>index.php/BookingsController/getTimeSlots",
+                data:{"service_id":serviceId,"date":date,"selectedtime" : selectedTime},
+                dataType:"html",
+                success:function(response){
+                  
+                    $('.TimeSlots').html('');
+                    $('.TimeSlots').html(response);
                 }
-                
-                $("#guest_details").html(field);
-            }else{
-                $("#guest_details").html("");
-            }
-        });
+            })
 
-      $(document).ready(function(){
-
-        $('#start_time').load(function(){
-          
-        })
-
-   $('.time_slots').click(function(){
-     var time_slots = $(this).data('time');
-     var serviceId=$('#service_list').val();
-     date = $('#bookingdatepicker').val();
-    $("#start_time").val(time_slots);
-
-
-    var startts = $(this).data('startts');  
-    var timeslotId = "#timeslot"+startts;
-    $( ".time_slots" ).removeClass("selected-slot");
-    $( timeslotId ).addClass("selected-slot");  
-   
-
-    $.ajax({
-        type:"POST",
-        url:"<?php echo base_url(); ?>index.php/BookingsController/getMaxSlotsBookings",
-        data:{"service_id":serviceId,"time_slot":time_slots,"date":date},
-        dataType:"html",
-        success:function(response){
-          
-            $('#Party_Size').html('');
-            $('#Party_Size').html(response);
-            $('#guest_details').html('');
-           
         }
-    })
-})
-})
 
 
-    </script>
+
+
+
+
+   $('#start_time').load(function(){
+
+    //  var time_slots = $(this).data('time');
+    //  var serviceId=$('#service_list').val();
+    //  date = $('#bookingdatepicker').val();
+    // $("#start_time").val(time_slots);
+
+
+    // var startts = $(this).data('startts');  
+    // var timeslotId = "#timeslot"+startts;
+    // $( ".time_slots" ).removeClass("selected-slot");
+    // $( timeslotId ).addClass("selected-slot");
+   
+    // $.ajax({
+    //     type:"POST",
+    //     url:"<?php echo base_url(); ?>index.php/BookingsController/getMaxSlotsBookings",
+    //     data:{"service_id":serviceId,"time_slot":time_slots,"date":date},
+    //     dataType:"html",
+    //     success:function(response){
+          
+    //         $('#Party_Size').html('');
+    //         $('#Party_Size').html(response);
+    //         $('#guest_details').html('');
+           
+    //     }
+    // })
+
+
+})
+})
+</script>

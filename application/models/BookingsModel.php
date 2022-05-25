@@ -78,9 +78,9 @@ class BookingsModel extends CI_MODEL{
 	}
 
 	public function UpdateBookingDetails($booking_id){
-		 // $this->db->where('booking_id', $booking_id);
-   //       $result=$this->db->update('bookings', $data);
-   //       return $result;
+		 $this->db->where('booking_id', $booking_id);
+         $result=$this->db->update('bookings', $data);
+         return $result;
 	}
 
 	public function GetBookedTimeSlots($service_id,$date,$time){
@@ -91,12 +91,7 @@ class BookingsModel extends CI_MODEL{
         $this->db->where($BookedTimeSlotArr);	
         $GetData=$this->db->get();
         return $GetData->row();
-
     }
-
-
 }   
-
-
 
 ?>

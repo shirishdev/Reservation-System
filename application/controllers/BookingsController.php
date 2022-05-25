@@ -67,6 +67,8 @@ public function getTimeSlots(){
     
     
     $service_id=$this->input->post('service_id');
+
+    $data['selectedtime'] = $this->input->post('selectedtime');
    
     $date = date("m/d/Y", strtotime($this->input->post('date')));  
     

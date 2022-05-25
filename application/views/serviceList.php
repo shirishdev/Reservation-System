@@ -32,7 +32,7 @@
             			                          <tr>
             			                           <td><?php echo $row->service_id; ?></td>
 				                                   <td><?php echo $row->title; ?></td>
-				                                   <td><img src="../assets/uploads/" style="width:150px;height:150px;"> </td>
+				                                   <td><img src="./assets/uploads/" style="width:150px;height:150px;"> </td>
 				                                   <td><?php echo $row->description; ?> </td>
 				                                   <td><?php echo $row->start_date; ?></td>
 				                                   <td><?php echo $row->end_date; ?></td>

@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 $('#datepicker-inline').datepicker({
     format: "mm/dd/yyyy",
+   // minDate:0,
     defaultDate:new Date($('#selected_date').val())
        // todayHighlight: true,       
 });
