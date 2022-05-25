@@ -35,11 +35,13 @@
      <script src="<?php echo base_url('assets/js/dashBoard.js')?>"></script>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
+
         
         
 
 
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
 
 
     <!-- Pignose Calender -->
@@ -229,8 +231,11 @@
 
 
             //datepicker
+            //var dateToday = new Date();   
             $("#bookingdatepicker").datepicker({
-                format:"dd.mm.yyyy"
+                format:"dd.mm.yyyy",
+                //minDate: dateToday 
+               
             });
 
             $('#bookingdatepicker,#service_list').change(function(){
@@ -238,15 +243,25 @@
               getTimeSlots();
             });
 
+
             
 
        });
     
  
-       function  getTimeSlots(){
+       function  getTimeSlots(){(
          
 
         serviceId = $('#service_list').val();
+
+
+      });
+
+      
+    
+    function  getTimeSlots(){
+            serviceId = $('#service_list').val();
+
         date = $('#bookingdatepicker').val();
         if(serviceId != '' && date !=''){
             $.ajax({

@@ -1,12 +1,22 @@
 <div class="card-body">
 	<h5 class="card-title">Max Slot Bookings</h4>
 		<div class="basic-form">
-			
+			<?php 
+				$bookedCount = !empty($bookingsCount->totalcount) ? (int)$bookingsCount->totalcount : 0;
+				
+				$maxResidents = !empty($SlotBookings->max_residents) ? (int)$SlotBookings->max_residents : 0;
+				$maxSlotBooking =!empty($SlotBookings->max_slot_bookings) ? (int)$SlotBookings->max_slot_bookings : 0;
+
+
+				$remaingSpace = $maxResidents - $bookedCount;
+
+				$partySize = $remaingSpace < $maxSlotBooking ? $remaingSpace : $maxSlotBooking;
+					  
+			?>
 				<div class="form-group">
 					<select class="form-control form-control-lg" id="party_size" name="party_size">
 						<?php
-						$party_size=!empty($SlotBookings->max_slot_bookings) ? (int)$SlotBookings->max_slot_bookings : 0;
-						for($i=1; $i<=$party_size;$i++) { 
+						for($i=1; $i<=$partySize;$i++){ 
 							?>
 							<option class="Party_Size"><?php echo $i; ?></option>
 							<?php

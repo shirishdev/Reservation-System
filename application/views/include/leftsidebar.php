@@ -30,6 +30,7 @@
                         </a>
                     </li>
 
+
                        <li>
                         <a href="<?php echo base_url('index.php/Reservationcontroller/') ?>" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Reservation</span>
@@ -43,7 +44,6 @@
                         </a>
                     </li>
 
-                    
                 </ul>
             </div>
         </div>

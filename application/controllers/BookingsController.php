@@ -65,14 +65,19 @@ public function AddBookings(){
 
 public function getTimeSlots(){
     
-    $GetBookedTimeSlots='';
+    
     $service_id=$this->input->post('service_id');
-    $date=$this->input->post('date');
+   
+    $date = date("m/d/Y", strtotime($this->input->post('date')));  
+    
     $ServiceData = $this->BookingsModel->getDetailService($service_id);
+    $maxResidents = !empty($ServiceData->max_residents) ? (int)$ServiceData->max_residents : 0;
     if(!empty($ServiceData)){
 
        $data['date']=$date;
        $data['ServiceData']=$ServiceData;
+       
+
        $day=strtolower(date("l",strtotime($date))); 
        $startTimeKey=$day."_start_time";
        $endTimeKey=$day."_end_time";
@@ -84,10 +89,23 @@ public function getTimeSlots(){
        $endTs=strtotime($date.''.$endTime);
        $lenghtTs=(int)$ServiceData->service_length * 60 ;
        $TimeSlot=[];
+       
+      for ($i=$startTs; $i<$endTs ; $i+=$lenghtTs) { 
+        $class = 'available';
+      
+        $time=date('h:i A',$i);
+       
+        $countResult=$this->BookingsModel->GetBookedTimeSlots($service_id,$date,$time);
+        
+        $bookedCount = !empty($countResult->totalcount) ? (int)$countResult->totalcount : 0;
 
-       for ($i=$startTs; $i<$endTs ; $i+=$lenghtTs) { 
-         $TimeSlot[]=array('class'=>'available','bookingcount'=>'0','time'=>date('h:i A',$i));
-     }
+
+        if($bookedCount >= $maxResidents){
+            $class = 'booked';
+        }
+        $TimeSlot[]=array('class'=>$class,'bookingcount'=>'0','time'=>date('h:i A',$i)); 
+
+   }
      $data['TimeSlot'] = $TimeSlot;
      $result = $this->load->view('ViewTimeSlots',$data);
  }else{
@@ -98,6 +116,11 @@ public function getTimeSlots(){
 public function getMaxSlotsBookings(){
 
  $service_id=$this->input->post('service_id');
+ $time_slot=$this->input->post('time_slot');
+ $date=$this->input->post('date');
+
+ $data['bookingsCount'] = $this->BookingsModel->GetBookedTimeSlots($service_id,$date,$time_slot);
+
  $data['SlotBookings']=$this->BookingsModel->getMaxBookings($service_id);
  $this->load->view('MaxSlotBookings',$data);
 }
@@ -105,9 +128,7 @@ public function getMaxSlotsBookings(){
 public function UpdatedBookingStatus(){
     $booking_id=$this->input->post('booking_id');
     $status=$this->input->post('status');
-
     $result =$this->BookingsModel->UpdateBookingStatus($booking_id,$status);
-
     echo $result;
 }
 
@@ -127,8 +148,14 @@ public function DeleteBookingData(){
 
 public function UpdateBookingData(){
      $booking_id=$this->input->get('booking_id');
-     $data['BookingData']=$this->BookingsModel->UpdateBookingDetails($booking_id);
+     $data['BookingData']=$this->BookingsModel->GetBookingsData($booking_id);
+     $data['Services']=$this->BookingsModel->serviceList();
      $this->load->view('UpdateBookingData',$data);
+
+     if($this->input->post('Update')){
+        
+        
+     }
   }
 }
 ?>
