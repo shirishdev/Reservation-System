@@ -2,6 +2,12 @@
 
 class BookingsModel extends CI_MODEL{
 
+    public function GetBookingsData($booking_id){
+        $this->db->where('booking_id',$booking_id);
+    	$query=$this->db->get('bookings');
+         return $query->row();
+    }
+
 	public function InsertBookings($addBookings){
 		$this->db->insert('bookings',$addBookings);
 		$insert_id=$this->db->insert_id();
@@ -72,7 +78,9 @@ class BookingsModel extends CI_MODEL{
 	}
 
 	public function UpdateBookingDetails($booking_id){
-		
+		 // $this->db->where('booking_id', $booking_id);
+   //       $result=$this->db->update('bookings', $data);
+   //       return $result;
 	}
 
 	public function GetBookedTimeSlots($service_id,$date,$time){
@@ -85,6 +93,8 @@ class BookingsModel extends CI_MODEL{
         return $GetData->row();
 
     }
+
+
 }   
 
 

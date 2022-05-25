@@ -148,8 +148,14 @@ public function DeleteBookingData(){
 
 public function UpdateBookingData(){
      $booking_id=$this->input->get('booking_id');
-     $data['BookingData']=$this->BookingsModel->UpdateBookingDetails($booking_id);
+     $data['BookingData']=$this->BookingsModel->GetBookingsData($booking_id);
+     $data['Services']=$this->BookingsModel->serviceList();
      $this->load->view('UpdateBookingData',$data);
+
+     if($this->input->post('Update')){
+        
+        
+     }
   }
 }
 ?>
