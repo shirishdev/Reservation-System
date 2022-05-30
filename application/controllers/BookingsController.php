@@ -64,12 +64,12 @@ public function AddBookings(){
 }
 
 public function getTimeSlots(){
-    
-    
+
+
     $service_id=$this->input->post('service_id');
 
     $data['selectedtime'] = $this->input->post('selectedtime');
-   
+
     $date = date("m/d/Y", strtotime($this->input->post('date')));  
     
     $ServiceData = $this->BookingsModel->getDetailService($service_id);
@@ -78,7 +78,7 @@ public function getTimeSlots(){
 
        $data['date']=$date;
        $data['ServiceData']=$ServiceData;
-       
+
 
        $day=strtolower(date("l",strtotime($date))); 
        $startTimeKey=$day."_start_time";
@@ -91,12 +91,12 @@ public function getTimeSlots(){
        $endTs=strtotime($date.''.$endTime);
        $lenghtTs=(int)$ServiceData->service_length * 60 ;
        $TimeSlot=[];
-       
-      for ($i=$startTs; $i<$endTs ; $i+=$lenghtTs) { 
+
+       for ($i=$startTs; $i<$endTs ; $i+=$lenghtTs) { 
         $class = 'available';
-      
+
         $time=date('h:i A',$i);
-       
+
         $countResult=$this->BookingsModel->GetBookedTimeSlots($service_id,$date,$time);
         
         $bookedCount = !empty($countResult->totalcount) ? (int)$countResult->totalcount : 0;
@@ -107,12 +107,12 @@ public function getTimeSlots(){
         }
         $TimeSlot[]=array('class'=>$class,'bookingcount'=>'0','time'=>date('h:i A',$i)); 
 
-   }
-     $data['TimeSlot'] = $TimeSlot;
-     $result = $this->load->view('ViewTimeSlots',$data);
- }else{
-     echo "Service Feild Required";
- }
+    }
+    $data['TimeSlot'] = $TimeSlot;
+    $result = $this->load->view('ViewTimeSlots',$data);
+}else{
+ echo "Service Feild Required";
+}
 }
 
 public function getMaxSlotsBookings(){
@@ -139,7 +139,7 @@ public function DeleteBookingData(){
     $booking_id=$this->input->get('booking_id');
     $data['BookingData']=$this->BookingsModel->DeleteBookingDetails($booking_id);
     if($data==true){
-        
+
         echo "<script>alert('Booking Deleted Successfully')</script>";
         redirect('BookingsController');
     }else{
@@ -148,16 +148,57 @@ public function DeleteBookingData(){
     }
 }
 
-public function UpdateBookingData(){
+public function UpdateBookingRecords(){
+    try{
      $booking_id=$this->input->get('booking_id');
      $data['BookingData']=$this->BookingsModel->GetBookingsData($booking_id);
      $data['Services']=$this->BookingsModel->serviceList();
      $this->load->view('UpdateBookingData',$data);
 
      if($this->input->post('Update')){
-        
-        
-     }
-  }
+        $data=[
+            'name'=>$_POST['name'],
+            'email'=>$_POST['email'],
+            'contact'=>$_POST['contact'],
+            'service_id'=>$_POST['service_id'],
+            'booking_date'=>$_POST['booking_date'],
+            
+            'start_time'=>$_POST['start_time'],
+            'party_size'=>"2",
+            'booking_status'=>"Pending",
+            'booking_created_at'=> date('Y-m-d H:i:s')
+        ];
+
+
+        $result=$this->BookingsModel->UpdateBookingData($_POST['booking_id'],$data);
+
+
+
+        $guestDetails = !empty($_POST['guest_details']) ? $_POST['guest_details'] : [];
+
+        foreach ($guestDetails as $key => $value) {
+
+            $UpdateGuestFeilds=[
+                'booking_id'=>$result,
+                'guest_details'=> $value,
+            ];
+
+
+            $NewGuestFeilds=$this->BookingsModel->InsertNewGuestFeilds($UpdateGuestFeilds,$booking_id);
+        }
+
+        if($result>0) {
+            echo "<script>alert('Booking Updated Successfully')</script>";
+             redirect('BookingsController');
+        }else{
+            echo "<script>alert('Unable to update')</script>";
+        }
+    }
+}catch(Exception $e){
+    echo "<script>alert('".$e->getMessage()."')</script>";
+}
+//$this->load->view('BookingList');
+
+}
 }
 ?>

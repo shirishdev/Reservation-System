@@ -87,11 +87,26 @@ class BookingsModel extends CI_MODEL{
 
 		$this->db->select('SUM(party_size) as totalcount');
 		$this->db->from('bookings');
-		$BookedTimeSlotArr=array('service_id'=>$service_id,'booking_date'=>$date,'start_time'=>$time);
+	$BookedTimeSlotArr=array('service_id'=>$service_id,'booking_date'=>$date,'start_time'=>$time);
         $this->db->where($BookedTimeSlotArr);	
         $GetData=$this->db->get();
         return $GetData->row();
     }
+
+    public function UpdateBookingData($booking_id,$data){   
+
+        //echo $booking_id;die;
+    	$this->db->where('booking_id',$booking_id);
+    	$result=$this->db->update('bookings',$data);
+    	//$run=$this->db->last_query(); 
+    	return $result;
+    }
+    public function InsertNewGuestFeilds($UpdateGuestFeilds,$booking_id){
+    	$this->db->where('booking_id',$booking_id);
+		$this->db->update('guest',$UpdateGuestFeilds);
+		$insert_id=$this->db->insert_id();
+		return $insert_id;
+	}
 }   
 
 ?>

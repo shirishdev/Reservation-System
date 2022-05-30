@@ -3,52 +3,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AuthController extends CI_Controller{
 
- public function __construct(){
-   parent::__construct();
-   $this->load->helper('form','url');
-   $this->load->library('form_validation','session');
-   $this->load->database();
- }
+           public function __construct(){
+             parent::__construct();
+             $this->load->helper('form','url');
+             $this->load->library('form_validation','session');
+             $this->load->database();
+             $this->load->model('login_model');
+           }
 
- public function index(){
-   $this->load->view('login_view');
- }
+           public function index(){
+             $this->load->view('login_view');
+           }
+          
+           public function login(){
 
- public function login(){
+             $this->form_validation->set_rules('email','Email','required');
+             $this->form_validation->set_rules('password','Password','required');
 
-  $this->form_validation->set_rules('email','Email','required');
-  $this->form_validation->set_rules('password','Password','required');
+             if($this->form_validation->run()==FALSE){
 
-  if($this->form_validation->run()==FALSE){
-   redirect('AuthController');
- }else{
-  $email=$this->input->post('email');
-  $password=$this->input->post('password');
+              redirect('AuthController');
+             }else{
 
-  if ($email=="admin@gmail.com" && $password=="1234") {
+              $email=$this->input->post('email');
+              $password=$this->input->post('password');
 
-    $this->session->set_userdata(array('email'=>$email,));
+              $validate=$this->login_model->login($email,$password);
 
-    redirect('DashBoardController');
+              if($validate){
 
-  }else{
-    $this->load->model('login_view');
-    $result=$this->login_model->login();
-    if($result > 0){
-      $this->session->set_userdata(array('email'=>$email));
-      $this->load->view('homepage_view.php');
-    }else{
-      $msg="Wrong Email and password";
-      $this->load->view('login_view',$msg);
-    }
-  }
-}
-}
+                $this->session->set_userdata('email');
+                $this->session->set_userdata('password');
 
-public function logout(){
- $this->session->sess_destroy();
- redirect('AuthController');
-}
+                redirect('DashBoardController');
+              }else{
+                $this->session->set_flashdata('error','Invalidate login credentials');
+                redirect('AuthController');
+              }
+             }
+           }
+            
+
+           public function logout(){
+           $this->session->sess_destroy();
+           redirect('AuthController');
+          }
 
 }
 ?>

@@ -48,7 +48,7 @@
                                                 </select>
 											</td>
 
-											<td><a href="<?php echo base_url('index.php/BookingsController/UpdateBookingData/updateid?booking_id='.$row->booking_id); ?>" class="btn btn-primary">Update</a>
+											<td><a href="<?php echo base_url('index.php/BookingsController/UpdateBookingRecords/updateid?booking_id='.$row->booking_id); ?>" class="btn btn-primary">Update</a>
 
 												
 												<a href="<?php echo base_url('index.php/BookingsController/DeleteBookingData/deleteid?booking_id='.$row->booking_id); ?>" class="btn btn-info">Delete</a>

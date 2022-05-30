@@ -15,10 +15,11 @@
 						 <div class="card-body">
                             <h4 class="card-title">Update Booking</h4>
                                 <div class="basic-form">
-<form method="post" action="<?php echo base_url('index.php/BookingsController/UpdateBookingData'); ?>" enctype="multipart/form-data" id="UpdateBookingForm">
+<form method="post" action="<?php echo base_url('index.php/BookingsController/UpdateBookingRecords'); ?>" enctype="multipart/form-data" id="UpdateBookingForm">
                                       
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <input type="hidden" class="form-control" name="booking_id" value="<?php echo $BookingData->booking_id; ?>">
                                                 <label>Name</label>
                                                 <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<?php echo $BookingData->name; ?>">
                                             </div>
@@ -146,7 +147,7 @@
    
     // $.ajax({
     //     type:"POST",
-    //     url:"<?php echo base_url(); ?>index.php/BookingsController/getMaxSlotsBookings",
+    //     url:"<?//php echo base_url(); ?>index.php/BookingsController/getMaxSlotsBookings",
     //     data:{"service_id":serviceId,"time_slot":time_slots,"date":date},
     //     dataType:"html",
     //     success:function(response){

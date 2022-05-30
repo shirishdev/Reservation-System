@@ -2,11 +2,15 @@
 
 class login_model extends CI_Model{
 
-	public function login(){
-		$email=$this->input->post($email);
-		$password=$this->input->post($password);
-		$query=$this->db->where(['email' => $email, 'password' => $password])->get('users');
-		return  $query->num_rows();
+	public function login($email,$password){
+		$data=array(
+            'Email'=>$email,
+			'Password'=>$password);
+			$query=$this->db->where($data);
+			$login=$this->db->get('users');
+			if($login!=NULL){
+				return $login->row();
+			}
 	}
 }
 ?>

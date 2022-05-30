@@ -37,8 +37,7 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 <a class="text-center"> <h4>Login</h4></a>
-        
-                                <form class="mt-5 mb-5 login-input" action="login" method="post">
+         <form class="mt-5 mb-5 login-input" action="<?php echo base_url('index.php/AuthController/login'); ?>" method="post">
                                     <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Email" name="email">
                                     </div>
@@ -47,7 +46,7 @@
                                     </div>
                                     <button class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>
-                                <!-- <p class="mt-5 login-form__footer">Dont have account? <a href="page-register.html" class="text-primary">Sign Up</a> now</p> -->
+                                
                             </div>
                         </div>
                     </div>

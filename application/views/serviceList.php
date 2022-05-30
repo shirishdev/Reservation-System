@@ -30,6 +30,7 @@
 		                                         foreach($ServiceData as $row){ 
             			                          ?>          			
             			                          <tr>
+            			                          
             			                           <td><?php echo $row->service_id; ?></td>
 				                                   <td><?php echo $row->title; ?></td>
 				                                   <td><img src="./assets/uploads/" style="width:150px;height:150px;"> </td>
