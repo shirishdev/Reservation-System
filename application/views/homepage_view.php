@@ -9,8 +9,8 @@
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/DashBoardController'); ?>">Dashboard</a></li>
+                       <!--  <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li> -->
                     </ol>
                 </div>
             </div>
@@ -40,8 +40,6 @@
                                      	<div class="container mt-3">
 						  <div>
 						<div class="card-body">  
-
-
                          <input type="hidden" name="selected_date" id="selected_date" value="<?php echo $date;?>">                                                 
                         <h2>Selected date:<span style="color:blue" id="dateLabel"><?php echo $date;?></span></h2>
                        

@@ -249,13 +249,13 @@
        });
     
  
-       function  getTimeSlots(){(
+      //  function  getTimeSlots(){(
          
 
-        serviceId = $('#service_list').val();
+      //   serviceId = $('#service_list').val();
 
 
-      });
+      // });
 
       
     

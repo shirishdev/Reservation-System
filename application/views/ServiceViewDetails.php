@@ -140,14 +140,14 @@
 		$(document).ready(function() {
 			$(".timeslots").click(function() {
 
-
 				var startts = $(this).data('startts');
+				//alert(startts);
 				var timeslotsid = "#time"+startts;
 				$(".timeslots").removeClass("selected-slot");
 				$(timeslotsid).addClass("selected-slot");
-
+                  
 				var timeslots = $(this).data('time');
-         // alert(timeslots);
+         //alert(timeslots);
          $("#start_time").val(timeslots);
 
          serviceId=$('#service_id').val();

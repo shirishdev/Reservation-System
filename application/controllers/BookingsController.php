@@ -24,7 +24,7 @@ public function AddBookings(){
 
         $data['Services']=$this->BookingsModel->serviceList();
         $this->load->view('InsertBookings',$data);
-
+        
         if ($this->input->post('submit')) {
 
          $addBookings=[

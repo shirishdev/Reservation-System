@@ -9,12 +9,16 @@ class ReservationController extends CI_Controller {
         //load the database  
 		$this->load->database();  
          //load the model  
-		//$this->load->model('Reservationmodel');  
+		$this->load->model('ReservationModel');  
 
 	}
 
 	public function index() {
-			$this->load->view('ReservationView');
+      //echo("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");die;
+		$data['Services']=$this->ReservationModel->FetchReservationServicesList();	
+        $this->load->view('ReservationView',$data);
 	}
+
+	
 }
 ?>

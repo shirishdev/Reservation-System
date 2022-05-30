@@ -18,6 +18,7 @@ class HomepageController extends CI_Controller {
 	 	//load the method of model  
 		$data['serviceList']=$this->Homepagemodel->displayservicerecords($date);  
 		$data['date'] = $date;
+		
 
 		$this->load->view('homepage_view',$data);
 	}
